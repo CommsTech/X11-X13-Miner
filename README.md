@@ -8,3 +8,6 @@ add, remove or modify the code to fit your mining needs. If you locate an Issue 
 Thank you.
 
 P.S. Don’t forget to change the Run-X11-X64.bat or you will be mining for me.
+
+
+Donations always welcome @ 1LJydbC5rBv7CAaEUrEhfWn9Q1Sw2iFtL6
